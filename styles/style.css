@@ -1,0 +1,235 @@
+/* Основные стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero {
+    padding: 100px 0;
+}
+
+.progress {
+    height: 20px;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Адаптивность изображений */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Стили для страницы проектов */
+.project-item {
+    display: block;
+}
+
+/* Стили для форм */
+.invalid-feedback {
+    display: none;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+    display: block;
+}
+/* Анимации для фильтрации проектов */
+.project-item {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Стили для активных кнопок фильтра */
+.filter-btn.active {
+    transform: scale(1.05);
+}
+
+/* Анимация появления карточек */
+.card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для выполненных задач */
+.list-group-item span {
+    transition: all 0.3s ease;
+}
+/* Дополнительные стили для projects.html */
+.badge.bg-purple {
+    background-color: #6f42c1 !important;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-text.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+/* Стили для фильтрации проектов */
+.project-item {
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn.active {
+    transform: scale(1.05);
+}
+
+/* Стили для карточек */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-text.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+/* Стили для логотипа */
+.logo-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Принудительно ограничиваем размер */
+.navbar-brand img {
+    max-width: 40px !important;
+    max-height: 40px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Плейсхолдер если нет логотипа */
+.logo-container:not(:has(img[src])) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.logo-container:not(:has(img[src]))::before {
+    content: "LS";
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.brand-text {
+    font-weight: 600;
+    color: white;
+    margin-left: 8px;
+}
+
+/* Убираем стандартные стили bootstrap для бренда */
+.navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-brand:hover {
+    opacity: 0.9;
+}
+
+/* Гарантируем что навигация не ломается */
+.navbar > .container {
+    display: flex;
+    align-items: center;
+}
+
+/* Стили для фильтрации проектов */
+.project-item {
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn.active {
+    transform: scale(1.05);
+}
+
+/* Стили для карточек */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-text.text-muted {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}

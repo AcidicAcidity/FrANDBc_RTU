@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Дневник</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="d-flex align-items-center">
+                    <!-- Логотип -->
+                    <div class="logo-placeholder me-2">
+                        <img src="../images/logo.jpg" alt="Логотип" class="navbar-logo">
+                    </div>
+                    Александров Егор
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Проекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="diary.html">Дневник</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="diary py-5">
+        <div class="container">
+            <h1 class="text-center mb-4">Мой учебный прогресс</h1>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Задачи</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-2" type="checkbox" checked>
+                                    15 дек - Верстка макета сайта
+                                </li>
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-2" type="checkbox" checked>
+                                    10 дек - JavaScript основы
+                                </li>
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-2" type="checkbox">
+                                    05 дек - Работа с формами
+                                </li>
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-2" type="checkbox">
+                                    01 дек - Адаптивный дизайн
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addTaskModal">Добавить запись</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Текущие курсы</h5>
+                            <p>Веб-разработка <span class="float-end">90%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:90%"></div>
+                            </div>
+                            <p>JavaScript <span class="float-end">70%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:70%"></div>
+                            </div>
+                            <p>React <span class="float-end">50%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно добавления задачи -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить новую задачу</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <div class="mb-3">
+                            <label for="taskDate" class="form-label">Дата</label>
+                            <input type="date" class="form-control" id="taskDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Описание задачи</label>
+                            <input type="text" class="form-control" id="taskDescription" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Все права защищены</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
