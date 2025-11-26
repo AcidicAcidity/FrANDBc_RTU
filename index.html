@@ -2,131 +2,158 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Портфолио - Главная</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <div class="d-flex align-items-center">
-                    <!-- Логотип -->
-                    <div class="logo-placeholder me-2">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <div class="page">
+        <!-- Навигация -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Основная навигация">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <div class="logo-container me-2">
+                        <!-- если есть логотип, положите images/logo.png -->
                         <!-- <img src="images/logo.png" alt="Логотип" class="navbar-logo"> -->
                     </div>
-                    Портфолио
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/projects.html">Проекты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/diary.html">Дневник</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/contacts.html">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Герой секция -->
-    <section class="hero bg-primary text-white text-center py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1>Привет! Я студент группы 3ФБО-13-24</h1>
-                    <p class="lead">Увлекаюсь веб-разработкой</p>
-                    <a href="assets/resume.pdf" class="btn btn-light btn-lg" download>Скачать резюме</a>
-                </div>
-                <div class="col-md-6">
-                    <img src="images/photo.jpg" alt="Фото студента" class="img-fluid rounded-circle">
+                    <span class="brand-text">Портфолио</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/projects.html">Проекты</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/diary.html">Дневник</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Навыки -->
-    <section class="skills py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Мои навыки</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>HTML/CSS <span class="float-end">90%</span></p>
-                    <div class="progress mb-3">
-                        <div class="progress-bar" style="width:90%"></div>
-                    </div>
-                    <p>JavaScript <span class="float-end">80%</span></p>
-                    <div class="progress mb-3">
-                        <div class="progress-bar" style="width:80%"></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <p>Bootstrap <span class="float-end">85%</span></p>
-                    <div class="progress mb-3">
-                        <div class="progress-bar" style="width:85%"></div>
-                    </div>
-                    <p>React <span class="float-end">60%</span></p>
-                    <div class="progress mb-3">
-                        <div class="progress-bar" style="width:60%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Лучшие проекты -->
-    <section class="projects bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Лучшие проекты</h2>
-            <div class="row text-center">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Сайт</h5>
-                            <p class="card-text">Был создан сайт для туристического агенства</p>
+        <main id="main" class="flex-grow-1">
+            <!-- Герой секция -->
+            <section class="hero bg-primary text-white text-center py-5">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-md-start">
+                            <h1>Привет! Я студент группы ЭФБО-99-99</h1>
+                            <p class="lead">Увлекаюсь веб-разработкой</p>
+                            <a href="assets/resume.pdf" class="btn btn-light btn-lg" download>Скачать резюме</a>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <figure class="hero__image" aria-hidden="false">
+                                <picture>
+                                    <source type="image/webp" srcset="images/photo-150.webp 150w, images/photo-300.webp 300w, images/photo-600.webp 600w" sizes="(max-width:600px) 50vw, 300px">
+                                    <img src="images/photo-300.jpg" srcset="images/photo-150.jpg 150w, images/photo-300.jpg 300w, images/photo-600.jpg 600w" sizes="(max-width:600px) 50vw, 300px" width="300" height="300" alt="Фото студента" class="img-fluid rounded-circle hero__photo" fetchpriority="high">
+                                </picture>
+                            </figure>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Интеграция</h5>
-                            <p class="card-text">Интегрирован вебхук в Битрикс24 для юридической компании</p>
+            </section>
+
+            <!-- Навыки -->
+            <section class="skills py-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">Мои навыки</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>HTML/CSS <span class="float-end">90%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:90%"></div>
+                            </div>
+                            <p>JavaScript <span class="float-end">80%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:80%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Bootstrap <span class="float-end">85%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:85%"></div>
+                            </div>
+                            <p>React <span class="float-end">60%</span></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" style="width:60%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Расширение</h5>
-                            <p class="card-text">Создание веб-расширения для браузера</p>
-                        </div>
+            </section>
+
+            <!-- Лучшие проекты -->
+            <section class="projects bg-light py-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">Лучшие проекты</h2>
+
+                    <div class="projects-preview__grid" role="list">
+                        <!-- карточки с изображениями -->
+                        <article class="project-card card project-item" data-title="Сайт" data-tech="HTML/CSS" data-desc="Был создан сайт для туристического агентства" role="button" tabindex="0">
+                            <picture class="card-img-top">
+                                <source type="image/webp" srcset="images/project1-300.webp 300w, images/project1-600.webp 600w" sizes="(max-width:600px) 100vw, 300px">
+                                <img src="images/project1-300.jpg" srcset="images/project1-300.jpg 300w, images/project1-600.jpg 600w" sizes="(max-width:600px) 100vw, 300px" width="600" height="400" alt="Проект: Сайт" class="img-fluid">
+                            </picture>
+                            <div class="card-body">
+                                <h5 class="card-title">Сайт</h5>
+                                <p class="card-text">Был создан сайт для туристического агенства</p>
+                            </div>
+                        </article>
+
+                        <article class="project-card card project-item" data-title="Интеграция" data-tech="Вебхук / Битрикс24" data-desc="Интегрирован вебхук в Битрикс24 для юридической компании" role="button" tabindex="0">
+                            <picture class="card-img-top">
+                                <source type="image/webp" srcset="images/project2-300.webp 300w, images/project2-600.webp 600w" sizes="(max-width:600px) 100vw, 300px">
+                                <img src="images/project2-300.jpg" srcset="images/project2-300.jpg 300w, images/project2-600.jpg 600w" sizes="(max-width:600px) 100vw, 300px" width="600" height="400" alt="Проект: Интеграция" class="img-fluid" loading="lazy">
+                            </picture>
+                            <div class="card-body">
+                                <h5 class="card-title">Интеграция</h5>
+                                <p class="card-text">Интегрирован вебхук в Битрикс24 для юридической компании</p>
+                            </div>
+                        </article>
+
+                        <article class="project-card card project-item" data-title="Расширение" data-tech="Browser Extension" data-desc="Создание веб-расширения для браузера" role="button" tabindex="0">
+                            <picture class="card-img-top">
+                                <source type="image/webp" srcset="images/project3-300.webp 300w, images/project3-600.webp 600w" sizes="(max-width:600px) 100vw, 300px">
+                                <img src="images/project3-300.jpg" srcset="images/project3-300.jpg 300w, images/project3-600.jpg 600w" sizes="(max-width:600px) 100vw, 300px" width="600" height="400" alt="Проект: Расширение" class="img-fluid" loading="lazy">
+                            </picture>
+                            <div class="card-body">
+                                <h5 class="card-title">Расширение</h5>
+                                <p class="card-text">Создание веб-расширения для браузера</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Модальное окно для проектов -->
+        <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalTitle">Название проекта</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="projectModalTech" class="text-muted"></p>
+                        <p id="projectModalDesc"></p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Футер -->
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>&copy; 2025  Все права защищены</p>
-        </div>
-    </footer>
+        <footer class="bg-dark text-white text-center py-3 footer">
+            <div class="container">
+                <p>&copy; 2025 Все права защищены</p>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
