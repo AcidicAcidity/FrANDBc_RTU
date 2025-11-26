@@ -2,92 +2,79 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио - Контакты</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Портфолио студента - Контакты</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <div class="d-flex align-items-center">
-                    <!-- Логотип -->
-                    <div class="logo-placeholder me-2">
-                        <!-- <img src="../images/logo.png" alt="Логотип" class="navbar-logo"> -->
-                    </div>
-                    Александров Егор
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Проекты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="diary.html">Дневник</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacts.html">Контакты</a>
-                    </li>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <div class="page-wrapper">
+        <header class="nav">
+            <div class="logo-container">
+                <img src="../images/logo.jpg" alt="Логотип" class="logo" width="50" height="50">
+                <h1>Александров Егор</h1>
+            </div>
+            <nav aria-label="Основная навигация">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="projects.html" class="nav-link">Проекты</a></li>
+                    <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                    <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+            </nav>
+        </header>
 
-    <section class="contacts py-5">
-        <div class="container">
-            <h1 class="text-center mb-4">Свяжитесь со мной</h1>
-
-            <div class="row">
-                <div class="col-md-8">
-                    <form id="contactForm" novalidate>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Имя</label>
-                            <input type="text" class="form-control" id="name" required>
-                            <div class="invalid-feedback">Пожалуйста, введите ваше имя.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                            <div class="invalid-feedback">Пожалуйста, введите корректный email.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
-                            <div class="invalid-feedback">Пожалуйста, введите ваше сообщение.</div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить сообщение</button>
-                    </form>
+        <main id="main" class="main-content">
+            <section class="contact-info">
+                <h2 class="section-title">Контакты</h2>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>egoralexandrov131024@gmail.com</span>
                 </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💻</span>
+                    <span>GitHub: AcidicAcidity</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Москва, Россия</span>
+                </div>
+                <button class="btn contact-btn" id="contact-btn">Связаться со мной</button>
+            </section>
+        </main>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Контакты</h5>
-                            <p>📧 aleksandrov.e.v1@edu.mirea.ru</p>
-                            <p>💻 GitHub: AcidicAcidity</p>
-                            <p>🏠 Москва, Россия</p>
-                        </div>
+        <!-- Модальное окно для формы контактов -->
+        <div id="contact-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Свяжитесь со мной</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error-message" id="name-error"></span>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <span class="error-message" id="message-error"></span>
+                    </div>
+                    <button type="submit" class="btn">Отправить сообщение</button>
+                </form>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>&copy; 2025 Все права защищены</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <p>© 2025 Контакты</p>
+        </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../scripts/script.js"></script>
 </body>
 </html>

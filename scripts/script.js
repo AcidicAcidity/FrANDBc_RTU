@@ -1,175 +1,270 @@
-// Фильтрация проектов
+// Основной скрипт для всего сайта
+
 document.addEventListener('DOMContentLoaded', function() {
-    initializeProjectFilters();
-    initializeTaskForm();
-    initializeContactForm();
-});
+    // Анимация прогресс-баров при загрузке страницы
+    const progressBars = document.querySelectorAll('.skill-level, .progress');
 
-// Инициализация фильтров проектов
-function initializeProjectFilters() {
+    function animateProgressBars() {
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    }
+
+    // Запуск анимации при загрузке страницы
+    animateProgressBars();
+
+    // Фильтрация проектов
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectItems = document.querySelectorAll('.project-item');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    if (filterButtons.length > 0 && projectItems.length > 0) {
+    if (filterButtons.length > 0) {
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-
-                // Убираем активный класс со всех кнопок
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.classList.remove('btn-primary');
-                    btn.classList.add('btn-outline-primary');
-                });
-
+                // Убираем активный класс у всех кнопок
+                filterButtons.forEach(btn => btn.classList.remove('active'));
                 // Добавляем активный класс текущей кнопке
                 this.classList.add('active');
-                this.classList.remove('btn-outline-primary');
-                this.classList.add('btn-primary');
 
-                // Фильтрация проектов
-                projectItems.forEach(item => {
-                    const category = item.getAttribute('data-category');
+                const filter = this.getAttribute('data-filter');
 
-                    if (filter === 'all' || category === filter) {
-                        item.style.display = 'block';
-                        // Анимация появления
-                        item.style.opacity = '0';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transition = 'opacity 0.3s ease';
-                        }, 50);
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
                     } else {
-                        item.style.display = 'none';
+                        card.style.display = 'none';
                     }
                 });
             });
         });
-
-        console.log('Фильтрация проектов инициализирована');
     }
-}
 
-// Инициализация формы добавления задач
-function initializeTaskForm() {
-    const taskForm = document.getElementById('taskForm');
-    if (taskForm) {
-        taskForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    // Модальные окна для проектов (клик по карточке)
+    const clickableCards = document.querySelectorAll('.project-card.clickable');
+    const projectModal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
 
-            const dateInput = document.getElementById('taskDate');
-            const descriptionInput = document.getElementById('taskDescription');
+    if (clickableCards.length > 0 && projectModal) {
+        clickableCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                loadProjectDetails(projectId);
+                projectModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
 
-            const date = dateInput.value;
-            const description = descriptionInput.value;
+        // Закрытие модального окна
+        const closeBtn = projectModal.querySelector('.close');
+        closeBtn.addEventListener('click', function() {
+            projectModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
 
-            if (date && description) {
-                // Форматируем дату
-                const formattedDate = formatDate(date);
+        // Закрытие при клике вне модального окна
+        window.addEventListener('click', function(event) {
+            if (event.target === projectModal) {
+                projectModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 
-                const taskList = document.querySelector('.list-group');
-                const newTask = document.createElement('li');
-                newTask.className = 'list-group-item d-flex align-items-center';
-                newTask.innerHTML = `
-                    <input class="form-check-input me-2" type="checkbox">
-                    <span>${formattedDate} - ${description}</span>
+    // Функция загрузки деталей проекта
+    function loadProjectDetails(projectId) {
+        const projectDetails = {
+            '1': {
+                title: 'Личный сайт',
+                description: 'Полностью адаптивный личный сайт-портфолио, созданный с использованием HTML5 и CSS3. Включает анимации, адаптивную верстку и современный дизайн.',
+                technologies: ['HTML5', 'CSS3', 'JavaScript'],
+                screenshot: '../images/icons/pr_pic1.jpg',
+                liveLink: '#',
+                codeLink: '#'
+            },
+            '2': {
+                title: 'Todo-приложение',
+                description: 'Интерактивное приложение для управления задачами с возможностью добавления, редактирования, удаления и отметки выполненных задач.',
+                technologies: ['JavaScript', 'LocalStorage', 'CSS3'],
+                screenshot: '../images/icons/pr_pic2.jpg',
+                liveLink: '#',
+                codeLink: '#'
+            },
+            '3': {
+                title: 'Интернет-магазин',
+                description: 'Полнофункциональный интернет-магазин с корзиной покупок, системой фильтрации товаров и адаптивным дизайном.',
+                technologies: ['React', 'Node.js', 'MongoDB'],
+                screenshot: '../images/icons/pr_pic3.jpg',
+                liveLink: '#',
+                codeLink: '#'
+            },
+            '4': {
+                title: 'Портфолио на Bootstrap',
+                description: 'Адаптивное портфолио, созданное с использованием фреймворка Bootstrap 5. Включает сетку проектов, модальные окна и responsive навигацию.',
+                technologies: ['Bootstrap 5', 'HTML5', 'JavaScript'],
+                screenshot: '../images/icons/pr_pic1.jpg',
+                liveLink: '#',
+                codeLink: '#'
+            }
+        };
+
+        const project = projectDetails[projectId];
+        if (project) {
+            modalBody.innerHTML = `
+                <div class="project-details">
+                    <div class="project-image-container">
+                        <img src="${project.screenshot}" alt="${project.title}" class="project-image" width="400" height="300" loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-technologies">
+                            <h4>Технологии:</h4>
+                            <ul>
+                                ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.liveLink}" class="btn" target="_blank" rel="noopener">Живая версия</a>
+                            <a href="${project.codeLink}" class="btn" target="_blank" rel="noopener">Исходный код</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    // Модальное окно для формы контактов
+    const contactBtn = document.getElementById('contact-btn');
+    const contactModal = document.getElementById('contact-modal');
+
+    if (contactBtn && contactModal) {
+        contactBtn.addEventListener('click', function() {
+            contactModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeBtn = contactModal.querySelector('.close');
+        closeBtn.addEventListener('click', function() {
+            contactModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === contactModal) {
+                contactModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Добавление записей в дневник
+    const addEntryBtn = document.getElementById('add-entry-btn');
+    const addEntryModal = document.getElementById('add-entry-modal');
+    const addEntryForm = document.getElementById('add-entry-form');
+
+    if (addEntryBtn && addEntryModal) {
+        addEntryBtn.addEventListener('click', function() {
+            addEntryModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeBtn = addEntryModal.querySelector('.close');
+        closeBtn.addEventListener('click', function() {
+            addEntryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === addEntryModal) {
+                addEntryModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        if (addEntryForm) {
+            addEntryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const date = document.getElementById('entry-date').value;
+                const task = document.getElementById('entry-task').value;
+                const status = document.getElementById('entry-status').value;
+
+                // Форматирование даты
+                const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
+                    day: 'numeric',
+                    month: 'short'
+                });
+
+                // Создание новой записи
+                const timeline = document.querySelector('.progress-timeline');
+                const newEntry = document.createElement('div');
+                newEntry.className = `timeline-item ${status === 'completed' ? 'completed' : 'in-progress'}`;
+                newEntry.innerHTML = `
+                    <span class="date">${formattedDate}</span>
+                    <span class="task">${task}</span>
+                    <span class="status">${status === 'completed' ? '✓' : 'in progress'}</span>
                 `;
 
-                // Добавляем обработчик для checkbox
-                const checkbox = newTask.querySelector('input[type="checkbox"]');
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        newTask.querySelector('span').style.textDecoration = 'line-through';
-                        newTask.querySelector('span').style.color = '#6c757d';
-                    } else {
-                        newTask.querySelector('span').style.textDecoration = 'none';
-                        newTask.querySelector('span').style.color = 'inherit';
-                    }
-                });
+                timeline.appendChild(newEntry);
+                addEntryModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                addEntryForm.reset();
 
-                taskList.appendChild(newTask);
-
-                // Закрываем модальное окно
-                const modal = bootstrap.Modal.getInstance(document.getElementById('addTaskModal'));
-                modal.hide();
-
-                // Очищаем форму
-                taskForm.reset();
-
-                alert('Задача успешно добавлена!');
-            }
-        });
+                alert('Запись успешно добавлена!');
+            });
+        }
     }
-}
 
-// Инициализация формы контактов
-function initializeContactForm() {
-    const contactForm = document.getElementById('contactForm');
+    // Валидация формы контактов
+    const contactForm = document.getElementById('contact-form');
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            if (!contactForm.checkValidity()) {
-                e.preventDefault();
-                e.stopPropagation();
+            e.preventDefault();
+
+            let isValid = true;
+
+            // Валидация имени
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            if (name.value.trim() === '') {
+                nameError.textContent = 'Пожалуйста, введите ваше имя';
+                isValid = false;
             } else {
-                e.preventDefault();
-                // Здесь можно добавить отправку формы на сервер
-                alert('Сообщение отправлено! Спасибо за ваше сообщение.');
-                contactForm.reset();
-                contactForm.classList.remove('was-validated');
+                nameError.textContent = '';
             }
 
-            contactForm.classList.add('was-validated');
-        });
+            // Валидация email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                emailError.textContent = 'Пожалуйста, введите корректный email';
+                isValid = false;
+            } else {
+                emailError.textContent = '';
+            }
 
-        // Сброс валидации при изменении полей
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.checkValidity()) {
-                    this.classList.remove('is-invalid');
-                    this.classList.add('is-valid');
-                } else {
-                    this.classList.remove('is-valid');
-                    this.classList.add('is-invalid');
-                }
-            });
+            // Валидация сообщения
+            const message = document.getElementById('message');
+            const messageError = document.getElementById('message-error');
+            if (message.value.trim() === '') {
+                messageError.textContent = 'Пожалуйста, введите ваше сообщение';
+                isValid = false;
+            } else {
+                messageError.textContent = '';
+            }
+
+            if (isValid) {
+                // Здесь обычно отправка формы на сервер
+                alert('Сообщение успешно отправлено!');
+                contactForm.reset();
+                contactModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         });
     }
-}
-
-// Функция для форматирования даты
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    return `${day}.${month}`;
-}
-
-// Дополнительные функции для улучшения UX
-document.addEventListener('DOMContentLoaded', function() {
-    // Плавная прокрутка для якорей
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Анимация карточек при загрузке
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
 });

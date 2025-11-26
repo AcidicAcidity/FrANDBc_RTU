@@ -2,152 +2,76 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио - Проекты</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Портфолио студента - Проекты</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <div class="d-flex align-items-center">
-                    <!-- Логотип -->
-                    <div class="logo-placeholder me-2">
-                        <!-- <img src="../images/logo.png" alt="Логотип" class="navbar-logo"> -->
-                    </div>
-                    Александров Егор
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Проекты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="diary.html">Дневник</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacts.html">Контакты</a>
-                    </li>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <div class="page-wrapper">
+        <header class="nav">
+            <div class="logo-container">
+                <img src="../images/logo.jpg" alt="Логотип" class="logo" width="50" height="50">
+                <h1>Александров Егор</h1>
+            </div>
+            <nav aria-label="Основная навигация">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+                    <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+            </nav>
+        </header>
 
-    <section class="projects-page py-5">
-        <div class="container">
-            <h1 class="text-center mb-4">Мои проекты</h1>
+        <main id="main" class="main-content">
+            <section class="projects-header">
+                <h2 class="section-title">Мои проекты</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="html">HTML</button>
+                    <button class="filter-btn" data-filter="js">JS</button>
+                    <button class="filter-btn" data-filter="react">React</button>
+                </div>
+            </section>
 
-            <!-- Фильтры -->
-            <div class="text-center mb-4">
-                <button class="btn btn-outline-primary active filter-btn" data-filter="all">Все</button>
-                <button class="btn btn-outline-primary filter-btn" data-filter="html">HTML</button>
-                <button class="btn btn-outline-primary filter-btn" data-filter="js">JavaScript</button>
-                <button class="btn btn-outline-primary filter-btn" data-filter="react">React</button>
-            </div>
-
-            <!-- Сетка проектов -->
-            <div class="row" id="projects-grid">
-                <!-- Проект 1 -->
-                <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="html">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Личный сайт</h5>
-                            <p class="card-text text-muted">HTML, CSS</p>
-                            <p class="card-text">Простой личный сайт-визитка с адаптивным дизайном и семантической версткой.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-primary">HTML5</span>
-                                <span class="badge bg-secondary">CSS3</span>
-                                <span class="badge bg-info">Адаптивный дизайн</span>
-                            </div>
-                        </div>
+            <section class="projects-preview">
+                <div class="projects-preview_grid">
+                    <div class="project-card clickable" data-category="html" data-project="1">
+                        <img src="../images/icons/pr_pic1.jpg" alt="Личный сайт" width="300" height="200" loading="lazy">
+                        <h3 class="project-card_title">Личный сайт</h3>
+                        <p class="project-card_description">HTML, CSS</p>
+                    </div>
+                    <div class="project-card clickable" data-category="js" data-project="2">
+                        <img src="../images/icons/pr_pic2.jpg" alt="Todo-приложение" width="300" height="200" loading="lazy">
+                        <h3 class="project-card_title">Todo-приложение</h3>
+                        <p class="project-card_description">JavaScript</p>
+                    </div>
+                    <div class="project-card clickable" data-category="react" data-project="3">
+                        <img src="../images/icons/pr_pic3.jpg" alt="Интернет-магазин" width="300" height="200" loading="lazy">
+                        <h3 class="project-card_title">Интернет-магазин</h3>
+                        <p class="project-card_description">React</p>
                     </div>
                 </div>
+            </section>
+        </main>
 
-                <!-- Проект 2 -->
-                <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="js">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Todo-приложение</h5>
-                            <p class="card-text text-muted">JavaScript</p>
-                            <p class="card-text">Приложение для управления задачами с добавлением, удалением и сохранением в Local Storage.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-warning text-dark">JavaScript</span>
-                                <span class="badge bg-success">Local Storage</span>
-                                <span class="badge bg-info">CRUD операции</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Проект 3 -->
-                <div class="col-lg-4 col-md-6 mb-4 project-item" data-category="react">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Интернет-магазин</h5>
-                            <p class="card-text text-muted">React</p>
-                            <p class="card-text">Онлайн-магазин с корзиной покупок, фильтрацией товаров и системой поиска.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-info">React</span>
-                                <span class="badge bg-primary">React Router</span>
-                                <span class="badge bg-success">Context API</span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Модальное окно для проектов -->
+        <div id="project-modal" class="modal">
+            <div class="modal-content project-modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-body">
+                    <!-- Контент модального окна будет загружаться динамически -->
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>&copy; 2025 Все права защищены</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <p>© 2025 Контакты</p>
+        </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Простая фильтрация проектов
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectItems = document.querySelectorAll('.project-item');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-
-                    // Убираем активный класс со всех кнопок
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.classList.remove('btn-primary');
-                        btn.classList.add('btn-outline-primary');
-                    });
-
-                    // Добавляем активный класс текущей кнопке
-                    this.classList.add('active');
-                    this.classList.remove('btn-outline-primary');
-                    this.classList.add('btn-primary');
-
-                    // Фильтрация проектов
-                    projectItems.forEach(item => {
-                        const category = item.getAttribute('data-category');
-
-                        if (filter === 'all' || category === filter) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
