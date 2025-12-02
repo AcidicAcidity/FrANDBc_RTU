@@ -122,7 +122,7 @@ a, button, input, textarea {
 
 .nav a.active,
 .nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color:  #1d4ed8;
 }
 
 /* Основной контент */
@@ -384,11 +384,11 @@ a, button, input, textarea {
 }
 
 .timeline-item.completed .status {
-    color: #28a745;
+    color: #1f7a34;
 }
 
 .timeline-item.in-progress .status {
-    color: #ffc107;
+    color: #92400e;
 }
 
 .current-courses {
