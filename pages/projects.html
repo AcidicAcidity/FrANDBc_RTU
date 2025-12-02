@@ -12,7 +12,16 @@
     <div class="page-wrapper">
         <header class="nav">
             <div class="logo-container">
-                <img src="../images/logo.jpg" alt="Логотип" class="logo" width="50" height="50">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp">
+                    <source srcset="../images/logo.jpg" type="image/jpeg">
+                    <img src="../images/logo.jpg"
+                        alt="Логотип"
+                        class="logo"
+                        width="50"
+                        height="50"
+                        loading="lazy">
+                </picture>
                 <h1>Александров Егор</h1>
             </div>
             <nav aria-label="Основная навигация">
@@ -39,17 +48,80 @@
             <section class="projects-preview">
                 <div class="projects-preview_grid">
                     <div class="project-card clickable" data-category="html" data-project="1">
-                        <img src="../images/icons/pr_pic1.jpg" alt="Личный сайт" width="300" height="200" loading="lazy">
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="
+                                    ../images/icons/pr_pic1-400.webp 400w,
+                                    ../images/icons/pr_pic1-800.webp 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <source
+                                type="image/jpeg"
+                                srcset="
+                                    ../images/icons/pr_pic1-400.jpg 400w,
+                                    ../images/icons/pr_pic1-800.jpg 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <img src="../images/icons/pr_pic1.jpg"
+                                alt="Личный сайт"
+                                width="300" height="200"
+                                loading="lazy">
+                        </picture>
                         <h3 class="project-card_title">Личный сайт</h3>
                         <p class="project-card_description">HTML, CSS</p>
                     </div>
                     <div class="project-card clickable" data-category="js" data-project="2">
-                        <img src="../images/icons/pr_pic2.jpg" alt="Todo-приложение" width="300" height="200" loading="lazy">
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="
+                                    ../images/icons/pr_pic2-400.webp 400w,
+                                    ../images/icons/pr_pic2-800.webp 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <source
+                                type="image/jpeg"
+                                srcset="
+                                    ../images/icons/pr_pic2-400.jpg 400w,
+                                    ../images/icons/pr_pic2-800.jpg 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <img src="../images/icons/pr_pic2.jpg"
+                                alt="Todo-приложение"
+                                width="300" height="200"
+                                loading="lazy">
+                        </picture>
                         <h3 class="project-card_title">Todo-приложение</h3>
                         <p class="project-card_description">JavaScript</p>
                     </div>
                     <div class="project-card clickable" data-category="react" data-project="3">
-                        <img src="../images/icons/pr_pic3.jpg" alt="Интернет-магазин" width="300" height="200" loading="lazy">
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="
+                                    ../images/icons/pr_pic3-400.webp 400w,
+                                    ../images/icons/pr_pic3-800.webp 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <source
+                                type="image/jpeg"
+                                srcset="
+                                    ../images/icons/pr_pic3-400.jpg 400w,
+                                    ../images/icons/pr_pic3-800.jpg 800w"
+                                sizes="(max-width: 480px) 100vw,
+                                    (max-width: 768px) 50vw,
+                                    300px">
+                            <img src="../images/icons/pr_pic3.jpg"
+                                alt="Интернет-магазин"
+                                width="300" height="200"
+                                loading="lazy">
+                        </picture>
                         <h3 class="project-card_title">Интернет-магазин</h3>
                         <p class="project-card_description">React</p>
                     </div>

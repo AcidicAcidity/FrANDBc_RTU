@@ -12,7 +12,16 @@
     <div class="page-wrapper">
         <header class="nav">
             <div class="logo-container">
-                <img src="images/logo.jpg" alt="Логотип" class="logo" width="50" height="50">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp">
+                    <source srcset="images/logo.jpg" type="image/jpeg">
+                    <img src="images/logo.jpg"
+                        alt="Логотип"
+                        class="logo"
+                        width="50"
+                        height="50"
+                        loading="lazy">
+                </picture>
                 <h1>Александров Егор</h1>
             </div>
             <nav aria-label="Основная навигация">
@@ -26,7 +35,6 @@
         </header>
 
         <main id="main" class="main-content">
-            <!-- Убрал класс full-width -->
             <section class="hero">
                 <div class="hero-text">
                     <h2 class="hero-greeting">Привет! Я студент<br>группы ЭФБО-99-99</h2>
@@ -35,16 +43,34 @@
                 </div>
                 <div class="hero-image">
                     <figure class="hero_image">
-                        <img class="hero_photo"
-                            src="images/photo.jpg"
-                            width="200" height="200"
-                            alt="Портрет студента"
-                            fetchpriority="high">
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="
+                                    images/photo-400.webp 400w,
+                                    images/photo-800.webp 800w"
+                                sizes="(max-width: 480px) 150px,
+                                    (max-width: 768px) 180px,
+                                    200px">
+                            <source
+                                type="image/jpeg"
+                                srcset="
+                                    images/photo-400.jpg 400w,
+                                    images/photo-800.jpg 800w"
+                                sizes="(max-width: 480px) 150px,
+                                    (max-width: 768px) 180px,
+                                    200px">
+                            <!-- Фолбэк -->
+                            <img class="hero_photo"
+                                src="images/photo.jpg"
+                                width="200" height="200"
+                                alt="Портрет студента"
+                                fetchpriority="high">
+                        </picture>
                     </figure>
                 </div>
             </section>
 
-            <!-- Убрал класс full-width -->
             <section class="skills">
                 <h2 class="section-title">Мои навыки</h2>
                 <div class="skill">
@@ -83,17 +109,80 @@
                 <div class="projects-preview">
                     <div class="projects-preview_grid">
                         <div class="project-card">
-                            <img src="images/icons/in_pic1.jpg" alt="Личный сайт" width="300" height="200" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcset="
+                                        images/icons/in_pic1-400.webp 400w,
+                                        images/icons/in_pic1-800.webp 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <source
+                                    type="image/jpeg"
+                                    srcset="
+                                        images/icons/in_pic1-400.jpg 400w,
+                                        images/icons/in_pic1-800.jpg 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <img src="images/icons/in_pic1.jpg"
+                                    alt="Личный сайт"
+                                    width="300" height="200"
+                                    loading="lazy">
+                            </picture>
                             <h3 class="project-card_title">Личный сайт</h3>
                             <p class="project-card_description">Вы видите его перед собой 😊</p>
                         </div>
                         <div class="project-card">
-                            <img src="images/icons/in_pic2.jpg" alt="Интеграция отслеживания арбитражных дел в crm-систему" width="300" height="200" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcset="
+                                        images/icons/in_pic2-400.webp 400w,
+                                        images/icons/in_pic2-800.webp 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <source
+                                    type="image/jpeg"
+                                    srcset="
+                                        images/icons/in_pic2-400.jpg 400w,
+                                        images/icons/in_pic2-800.jpg 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <img src="images/icons/in_pic2.jpg"
+                                    alt="Интеграция отслеживания арбитражных дел в crm-систему"
+                                    width="300" height="200"
+                                    loading="lazy">
+                            </picture>
                             <h3 class="project-card_title">Интеграция отслеживания арбитражных дел в crm-систему</h3>
                             <p class="project-card_description">Интеграция картотеки арбитражных дел РФ в Bitrix24</p>
                         </div>
                         <div class="project-card">
-                            <img src="images/icons/in_pic3.jpg" alt="Проект 3" width="300" height="200" loading="lazy">
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcset="
+                                        images/icons/in_pic3-400.webp 400w,
+                                        images/icons/in_pic3-800.webp 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <source
+                                    type="image/jpeg"
+                                    srcset="
+                                        images/icons/in_pic3-400.jpg 400w,
+                                        images/icons/in_pic3-800.jpg 800w"
+                                    sizes="(max-width: 480px) 100vw,
+                                        (max-width: 768px) 50vw,
+                                        300px">
+                                <img src="images/icons/in_pic3.jpg"
+                                    alt="Проект 3"
+                                    width="300" height="200"
+                                    loading="lazy">
+                            </picture>
                             <h3 class="project-card_title">Создание Android калькулятора для действий с числами в нестандартных СС</h3>
                             <p class="project-card_description">В 5 классе создал приложение для своего телефона которое выполняло арифметические операции и переводы чисел в различные системы исчисления</p>
                         </div>

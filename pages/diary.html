@@ -12,7 +12,16 @@
     <div class="page-wrapper">
         <header class="nav">
             <div class="logo-container">
-                <img src="../images/logo.jpg" alt="Логотип" class="logo" width="50" height="50">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp">
+                    <source srcset="../images/logo.jpg" type="image/jpeg">
+                    <img src="../images/logo.jpg"
+                        alt="Логотип"
+                        class="logo"
+                        width="50"
+                        height="50"
+                        loading="lazy">
+                </picture>
                 <h1>Александров Егор</h1>
             </div>
             <nav aria-label="Основная навигация">
