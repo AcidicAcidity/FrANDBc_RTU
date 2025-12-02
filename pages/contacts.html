@@ -24,12 +24,12 @@
                 </picture>
                 <h1>Александров Егор</h1>
             </div>
-            <nav aria-label="Основная навигация">
+           <nav aria-label="Основная навигация" role="navigation">
                 <ul>
                     <li><a href="../index.html" class="nav-link">Главная</a></li>
                     <li><a href="projects.html" class="nav-link">Проекты</a></li>
                     <li><a href="diary.html" class="nav-link">Дневник</a></li>
-                    <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+                    <li><a href="contacts.html" class="nav-link active" aria-current="page">Контакты</a></li>
                 </ul>
             </nav>
         </header>
@@ -54,25 +54,53 @@
         </main>
 
         <!-- Модальное окно для формы контактов -->
-        <div id="contact-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Свяжитесь со мной</h2>
+        <div id="contact-modal" class="modal" aria-hidden="true">
+            <div class="modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="contact-modal-title"
+                tabindex="-1">
+                <button class="close" type="button" aria-label="Закрыть модальное окно">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="visually-hidden">Закрыть</span>
+                </button>
+                <h2 id="contact-modal-title">Свяжитесь со мной</h2>
                 <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" required>
-                        <span class="error-message" id="name-error"></span>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            aria-required="true"
+                            aria-describedby="name-error"
+                            aria-invalid="false">
+                        <span class="error-message" id="name-error" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="error-message" id="email-error"></span>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            aria-required="true"
+                            aria-describedby="email-error"
+                            aria-invalid="false">
+                        <span class="error-message" id="email-error" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                         <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                        <span class="error-message" id="message-error"></span>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                            aria-required="true"
+                            aria-describedby="message-error"
+                            aria-invalid="false"></textarea>
+                        <span class="error-message" id="message-error" aria-live="polite"></span>
                     </div>
                     <button type="submit" class="btn">Отправить сообщение</button>
                 </form>

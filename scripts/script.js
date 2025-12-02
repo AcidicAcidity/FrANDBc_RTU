@@ -42,6 +42,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== Универсальные функции для модалок =====
+
+    let previousActiveElement = null;
+
+    function openModal(modalElement) {
+        if (!modalElement) return;
+
+        previousActiveElement = document.activeElement;
+
+        modalElement.style.display = 'block';
+        modalElement.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        const modalContent = modalElement.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.focus();
+        }
+
+        // Esc для закрытия
+        function handleEscape(event) {
+            if (event.key === 'Escape') {
+                closeModal(modalElement);
+            }
+        }
+
+        modalElement._handleEscape = handleEscape;
+        document.addEventListener('keydown', handleEscape);
+
+        // Фокус-трап внутри модалки
+        modalElement.addEventListener('keydown', function(event) {
+            if (event.key !== 'Tab') return;
+
+            const focusableElements = modalElement.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            if (!focusableElements.length) return;
+
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (event.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    }
+
+    function closeModal(modalElement) {
+        if (!modalElement) return;
+
+        modalElement.style.display = 'none';
+        modalElement.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+
+        if (modalElement._handleEscape) {
+            document.removeEventListener('keydown', modalElement._handleEscape);
+            modalElement._handleEscape = null;
+        }
+
+        if (previousActiveElement) {
+            previousActiveElement.focus();
+            previousActiveElement = null;
+        }
+    }
+
     // Модальные окна для проектов (клик по карточке)
     const clickableCards = document.querySelectorAll('.project-card.clickable');
     const projectModal = document.getElementById('project-modal');
@@ -52,23 +124,23 @@ document.addEventListener('DOMContentLoaded', function() {
             card.addEventListener('click', function() {
                 const projectId = this.getAttribute('data-project');
                 loadProjectDetails(projectId);
-                projectModal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                openModal(projectModal);
             });
         });
 
-        // Закрытие модального окна
+        // Закрытие модального окна по кнопке
         const closeBtn = projectModal.querySelector('.close');
-        closeBtn.addEventListener('click', function() {
-            projectModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                closeModal(projectModal);
+            });
+        }
 
-        // Закрытие при клике вне модального окна
-        window.addEventListener('click', function(event) {
+        // Закрытие при клике по фону
+        projectModal.addEventListener('click', function(event) {
             if (event.target === projectModal) {
-                projectModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(projectModal);
             }
         });
     }
@@ -142,20 +214,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (contactBtn && contactModal) {
         contactBtn.addEventListener('click', function() {
-            contactModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(contactModal);
         });
 
         const closeBtn = contactModal.querySelector('.close');
-        closeBtn.addEventListener('click', function() {
-            contactModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                closeModal(contactModal);
+            });
+        }
 
-        window.addEventListener('click', function(event) {
+        contactModal.addEventListener('click', function(event) {
             if (event.target === contactModal) {
-                contactModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(contactModal);
             }
         });
     }
@@ -166,21 +238,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const addEntryForm = document.getElementById('add-entry-form');
 
     if (addEntryBtn && addEntryModal) {
+        // aria-expanded для кнопки
+        addEntryBtn.setAttribute('aria-expanded', 'false');
+
         addEntryBtn.addEventListener('click', function() {
-            addEntryModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(addEntryModal);
+            addEntryModal.setAttribute('aria-hidden', 'false');
+            addEntryBtn.setAttribute('aria-expanded', 'true');
         });
 
         const closeBtn = addEntryModal.querySelector('.close');
-        closeBtn.addEventListener('click', function() {
-            addEntryModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                closeModal(addEntryModal);
+                addEntryBtn.setAttribute('aria-expanded', 'false');
+            });
+        }
 
-        window.addEventListener('click', function(event) {
+        addEntryModal.addEventListener('click', function(event) {
             if (event.target === addEntryModal) {
-                addEntryModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(addEntryModal);
+                addEntryBtn.setAttribute('aria-expanded', 'false');
             }
         });
 
@@ -209,8 +288,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
 
                 timeline.appendChild(newEntry);
-                addEntryModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(addEntryModal);
+                addEntryBtn.setAttribute('aria-expanded', 'false');
                 addEntryForm.reset();
 
                 alert('Запись успешно добавлена!');
@@ -232,9 +311,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const nameError = document.getElementById('name-error');
             if (name.value.trim() === '') {
                 nameError.textContent = 'Пожалуйста, введите ваше имя';
+                name.setAttribute('aria-invalid', 'true');
                 isValid = false;
             } else {
                 nameError.textContent = '';
+                name.setAttribute('aria-invalid', 'false');
             }
 
             // Валидация email
@@ -243,9 +324,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email.value)) {
                 emailError.textContent = 'Пожалуйста, введите корректный email';
+                email.setAttribute('aria-invalid', 'true');
                 isValid = false;
             } else {
                 emailError.textContent = '';
+                email.setAttribute('aria-invalid', 'false');
             }
 
             // Валидация сообщения
@@ -253,17 +336,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const messageError = document.getElementById('message-error');
             if (message.value.trim() === '') {
                 messageError.textContent = 'Пожалуйста, введите ваше сообщение';
+                message.setAttribute('aria-invalid', 'true');
                 isValid = false;
             } else {
                 messageError.textContent = '';
+                message.setAttribute('aria-invalid', 'false');
             }
 
             if (isValid) {
-                // Здесь обычно отправка формы на сервер
                 alert('Сообщение успешно отправлено!');
                 contactForm.reset();
-                contactModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+
+                const contactModal = document.getElementById('contact-modal');
+                if (contactModal) {
+                    closeModal(contactModal);
+                }
             }
         });
     }

@@ -522,6 +522,9 @@ a, button, input, textarea {
     cursor: pointer;
     color: #aaa;
     z-index: 1001;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .close:hover {

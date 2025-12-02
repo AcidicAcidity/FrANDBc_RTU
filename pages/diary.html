@@ -24,11 +24,11 @@
                 </picture>
                 <h1>Александров Егор</h1>
             </div>
-            <nav aria-label="Основная навигация">
+            <nav aria-label="Основная навигация" role="navigation">
                 <ul>
                     <li><a href="../index.html" class="nav-link">Главная</a></li>
                     <li><a href="projects.html" class="nav-link">Проекты</a></li>
-                    <li><a href="diary.html" class="nav-link active">Дневник</a></li>
+                    <li><a href="diary.html" class="nav-link active" aria-current="page">Дневник</a></li>
                     <li><a href="contacts.html" class="nav-link">Контакты</a></li>
                 </ul>
             </nav>
@@ -90,10 +90,17 @@
         </main>
 
         <!-- Модальное окно для добавления записи -->
-        <div id="add-entry-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Добавить запись в дневник</h3>
+        <div id="add-entry-modal" class="modal" aria-hidden="true">
+            <div class="modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="add-entry-title"
+                tabindex="-1">
+                <button class="close" type="button" aria-label="Закрыть модальное окно">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="visually-hidden">Закрыть</span>
+                </button>
+                <h3 id="add-entry-title">Добавить запись в дневник</h3>
                 <form id="add-entry-form">
                     <div class="form-group">
                         <label for="entry-date">Дата:</label>
@@ -111,7 +118,10 @@
                             <option value="planned">Запланировано</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn">Добавить</button>
+                    <button class="btn add-entry-btn" id="add-entry-btn" aria-haspopup="dialog" aria-expanded="false">
+                        Добавить запись
+                    </button>
+
                 </form>
             </div>
         </div>

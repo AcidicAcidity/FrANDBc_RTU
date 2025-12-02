@@ -24,10 +24,10 @@
                 </picture>
                 <h1>Александров Егор</h1>
             </div>
-            <nav aria-label="Основная навигация">
+            <nav aria-label="Основная навигация" role="navigation">
                 <ul>
                     <li><a href="../index.html" class="nav-link">Главная</a></li>
-                    <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+                    <li><a href="projects.html" class="nav-link active" aria-current="page">Проекты</a></li>
                     <li><a href="diary.html" class="nav-link">Дневник</a></li>
                     <li><a href="contacts.html" class="nav-link">Контакты</a></li>
                 </ul>
@@ -130,14 +130,23 @@
         </main>
 
         <!-- Модальное окно для проектов -->
-        <div id="project-modal" class="modal">
-            <div class="modal-content project-modal-content">
-                <span class="close">&times;</span>
+        <div id="project-modal" class="modal" aria-hidden="true">
+            <div class="modal-content project-modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-modal-title"
+                tabindex="-1">
+                <button class="close" type="button" aria-label="Закрыть модальное окно">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="visually-hidden">Закрыть</span>
+                </button>
+                <h2 id="project-modal-title" class="visually-hidden">Информация о проекте</h2>
                 <div id="modal-body">
                     <!-- Контент модального окна будет загружаться динамически -->
                 </div>
             </div>
         </div>
+
 
         <footer class="footer">
             <p>© 2025 Контакты</p>
